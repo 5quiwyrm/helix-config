@@ -1,0 +1,128 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+color-modes = true
+true-color = true
+shell = ["powershell", "/c"]
+bufferline = "multiple"
+insert-final-newline = false
+end-of-line-diagnostics = "hint"
+completion-trigger-len = 1
+
+[editor.statusline]
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "position-percentage"]
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "bar"
+
+[editor.indent-guides]
+render = true
+skip-levels = 0
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 30
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[keys.insert]
+C-backspace = "delete_word_backward"
+C-S-backspace = "delete_word_forward"
+C-A-backspace = "kill_to_line_start"
+C-S-A-backspace = "kill_to_line_end"
+C-z = "undo"
+C-S-z = "redo"
+A-c = "move_char_left"
+A-a = "move_visual_line_down"
+A-e = "move_visual_line_up"
+A-i = "move_char_right"
+C-a = "move_line_down"
+C-e = "move_line_up"
+C-x = "align_view_center"
+A-t = "rotate_view"
+A-h = "normal_mode"
+A-v = "paste_before"
+A-backspace = "no_op"
+S-A-backspace = "no_op"
+A-s = ":w"
+
+[keys.normal.space]
+f = "file_picker_in_current_directory"
+F = "file_picker"
+"!" = "@* /<ret>"
+
+[keys.normal.g]
+E = "@gegl"
+   
+[keys.normal.h]
+h = "@I# <esc>\"%P;F.d"
+n = "@F<lt>;f<gt>yp<A-;>;a/<esc>"
+c = "@I## "
+a = "@I### "
+e = "@I#### "
+r = "@gsf d"
+l = "@S\\n<ret>"
+f = ":sh dprint fmt"
+g = "@mi[* /<ret>"
+m = "@:sh powershell dupl<ret><esc>"
+
+# # stlang macros
+# [keys.normal.l]
+# t = "@!DATE /T<ret>;A( ) |  {}<esc>F ;" # create new task w/ date
+# u = "@%/\\( \\)<ret>" # find first uncompleted task
+# c = "@xs\\( \\)<ret>c(X)<esc>gl" # complete task
+# r = "@xs\\(X\\)<ret>c( )<esc>gl" # reprise task
+# g = "@xs\\( \\)<ret>c(X)<esc>xs\\{<ret>ma{s\\( \\)<ret>c(X)<esc>,;" # complete task and all subtasks, only works on uncompleted tasks, or else it deletes your task :P
+# a = "@%S\\n<ret>KASAP<ret>K\\( \\)<ret>,;" # find first uncompleted ASAP task
+# T = "@ght{dma{d" # deletes task and all subtasks
+# G = "@ghf{;ma{md{<lt>i{}<esc>;" # ungroup tasks
+# m = "@ma{<A-;>;gh" # go to master task (if present)
+# d = "@!DATE /T<ret>*dn<A-;>;" # find task from today
+# # stlang - Shitty todo lang
+# # in stlang tasks have the form:
+# # date ( ) | task {}
+# # the optional bit contains curly braces that are used to group tasks
+# # currently grouped tasks only support "and" based grouping, not "or" based, due to limitations with helix scripting using macros
+# # a fmt tool will hopefully also be written such that "and" and "or" grouping is supported
+# # stlang must be used in a markdown file to get tables and whatnot
+
+[keys.normal]
+'}' = "goto_next_paragraph"
+'{' = "goto_prev_paragraph"
+A-C = "extend_char_left"
+A-A = "extend_visual_line_down"
+A-E = "extend_visual_line_up"
+A-I = "extend_char_right"
+A-W = "extend_next_word_start"
+A-B = "extend_prev_word_start"
+A-c = "move_char_left"
+A-a = "move_line_down"
+A-e = "move_line_up"
+A-i = "move_char_right"
+A-t = "rotate_view"
+A-s = ":w"
+"'" = "select_register"
+A-m = "merge_selections"
+A-y = "shrink_selection"
+
+[keys.normal.space.w]
+c = "jump_view_left"
+a = "jump_view_down"
+e = "jump_view_up"
+i = "jump_view_right"
+A-c = "swap_view_left"
+A-a = "swap_view_down"
+A-e = "swap_view_up"
+A-i = "swap_view_right"
+
+[keys.normal.Z]
+a = "scroll_down"
+e = "scroll_up"
+
+[keys.select]
+A-h = "normal_mode"
+
