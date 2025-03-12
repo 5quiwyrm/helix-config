@@ -1,17 +1,15 @@
 theme = "catppuccin_mocha"
 
 [editor]
+idle-timeout = 50
 line-number = "relative"
-color-modes = true
 true-color = true
-shell = ["powershell", "/c"]
+shell = ["pwsh", "/c"]
 bufferline = "multiple"
 insert-final-newline = false
 end-of-line-diagnostics = "hint"
 completion-trigger-len = 1
-
-[editor.statusline]
-right = ["diagnostics", "selections", "register", "position", "file-encoding", "position-percentage"]
+jump-label-alphabet = "hcrasetiyponulvwdqxzgfbkj"
 
 [editor.cursor-shape]
 normal = "block"
@@ -28,6 +26,9 @@ max-wrap = 30
 
 [editor.inline-diagnostics]
 cursor-line = "warning"
+
+[editor.statusline]
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "file-type"]
 
 [keys.insert]
 C-backspace = "delete_word_backward"
@@ -49,15 +50,27 @@ A-v = "paste_before"
 A-backspace = "no_op"
 S-A-backspace = "no_op"
 A-s = ":w"
+A-w = "jump_backward"
+A-u = "jump_forward"
+A-r = "save_selection"
+C-S-up = "scroll_up"
+C-S-down = "scroll_down"
 
 [keys.normal.space]
 f = "file_picker_in_current_directory"
 F = "file_picker"
+q = ":buffer-close"
 "!" = "@* /<ret>"
+v = "@:vsplit "
+A = ":lsp-workspace-command"
 
 [keys.normal.g]
 E = "@gegl"
-   
+
+[keys.normal.m]
+e = ["flip_selections", "extend_char_left", "flip_selections", "extend_char_right"]
+u = "@mmmmbd<A-i>md("
+
 [keys.normal.h]
 h = "@I# <esc>\"%P;F.d"
 n = "@F<lt>;f<gt>yp<A-;>;a/<esc>"
@@ -66,9 +79,12 @@ a = "@I### "
 e = "@I#### "
 r = "@gsf d"
 l = "@S\\n<ret>"
-f = ":sh dprint fmt"
 g = "@mi[* /<ret>"
-m = "@:sh powershell dupl<ret><esc>"
+m = "@:sh dupl<ret><esc>"
+
+[keys.normal.h.f]
+m = ":sh dprint fmt ."
+c = ":sh cljfmt fix ."
 
 # # stlang macros
 # [keys.normal.l]
@@ -107,7 +123,21 @@ A-t = "rotate_view"
 A-s = ":w"
 "'" = "select_register"
 A-m = "merge_selections"
-A-y = "shrink_selection"
+S-A-o = "shrink_selection"
+S-A-n = "select_prev_sibling"
+A-home = "page_up"
+A-end = "page_down"
+A-w = "jump_backward"
+A-u = "jump_forward"
+A-r = "save_selection"
+C-S-up = "scroll_up"
+C-S-down = "scroll_down"
+A-left = "jump_view_left"
+A-down = "jump_view_down"
+A-up = "jump_view_up"
+A-right = "jump_view_right"
+ret = "add_newline_below"
+S-ret = "add_newline_above"
 
 [keys.normal.space.w]
 c = "jump_view_left"
@@ -125,4 +155,7 @@ e = "scroll_up"
 
 [keys.select]
 A-h = "normal_mode"
-
+A-c = "extend_char_left"
+A-a = "extend_line_down"
+A-e = "extend_line_up"
+A-i = "extend_char_right"
