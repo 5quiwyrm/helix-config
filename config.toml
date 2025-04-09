@@ -6,10 +6,10 @@ line-number = "relative"
 true-color = true
 shell = ["pwsh", "/c"]
 bufferline = "multiple"
-insert-final-newline = false
 end-of-line-diagnostics = "hint"
 completion-trigger-len = 1
 jump-label-alphabet = "hcrasetiyponulvwdqxzgfbkj"
+insert-final-newline = false
 
 [editor.cursor-shape]
 normal = "block"
@@ -49,12 +49,21 @@ A-h = "normal_mode"
 A-v = "paste_before"
 A-backspace = "no_op"
 S-A-backspace = "no_op"
-A-s = ":w"
+A-s = ":wa"
 A-w = "jump_backward"
 A-u = "jump_forward"
 A-r = "save_selection"
 C-S-up = "scroll_up"
 C-S-down = "scroll_down"
+A-left = "jump_view_left"
+A-down = "jump_view_down"
+A-up = "jump_view_up"
+A-right = "jump_view_right"
+home = "goto_first_nonwhitespace"
+A-home = "page_cursor_up"
+A-end = "page_cursor_down"
+S-A-home = "page_cursor_half_up"
+S-A-end = "page_cursor_half_down"
 
 [keys.normal.space]
 f = "file_picker_in_current_directory"
@@ -63,28 +72,25 @@ q = ":buffer-close"
 "!" = "@* /<ret>"
 v = "@:vsplit "
 A = ":lsp-workspace-command"
+A-y = "yank_joined_to_clipboard"
 
 [keys.normal.g]
 E = "@gegl"
 
 [keys.normal.m]
 e = ["flip_selections", "extend_char_left", "flip_selections", "extend_char_right"]
+E = ["flip_selections", "extend_char_right", "flip_selections", "extend_char_left"]
 u = "@mmmmbd<A-i>md("
 
 [keys.normal.h]
 h = "@I# <esc>\"%P;F.d"
-n = "@F<lt>;f<gt>yp<A-;>;a/<esc>"
-c = "@I## "
-a = "@I### "
-e = "@I#### "
-r = "@gsf d"
 l = "@S\\n<ret>"
-g = "@mi[* /<ret>"
+r = "reverse_selection_contents"
 m = "@:sh dupl<ret><esc>"
 
 [keys.normal.h.f]
-m = ":sh dprint fmt ."
-c = ":sh cljfmt fix ."
+m = ":sh dprint fmt"
+c = ":sh cljfmt fix"
 
 # # stlang macros
 # [keys.normal.l]
@@ -125,8 +131,11 @@ A-s = ":w"
 A-m = "merge_selections"
 S-A-o = "shrink_selection"
 S-A-n = "select_prev_sibling"
-A-home = "page_up"
-A-end = "page_down"
+home = "goto_first_nonwhitespace"
+A-home = "page_cursor_up"
+A-end = "page_cursor_down"
+S-A-home = "page_cursor_half_up"
+S-A-end = "page_cursor_half_down"
 A-w = "jump_backward"
 A-u = "jump_forward"
 A-r = "save_selection"
@@ -138,6 +147,10 @@ A-up = "jump_view_up"
 A-right = "jump_view_right"
 ret = "add_newline_below"
 S-ret = "add_newline_above"
+tab = "goto_next_buffer"
+S-tab = "goto_previous_buffer"
+A-d = "@*%s<ret>zz"
+A-y = "yank_joined"
 
 [keys.normal.space.w]
 c = "jump_view_left"
